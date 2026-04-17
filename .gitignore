@@ -1,0 +1,15 @@
+# --- Secrets & Environment Variables ---
+# Never push these! They contain your API keys and passwords.
+.env
+inspe.py
+tp.py
+user_prefs.db
+cli.py
+
+# --- Dependencies ---
+# These are huge folders that can be re-installed easily.
+Datasets/
+ki-env/
+Update/
+chroma_db_recipes/
+chroma_user_prefs/

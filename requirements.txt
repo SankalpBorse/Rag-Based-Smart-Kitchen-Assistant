@@ -1,0 +1,14 @@
+# LLM Providers
+groq>=0.9.0
+google-genai>=0.3.0
+
+# Vector store + embeddings
+chromadb>=0.5.0
+sentence-transformers>=2.2.2
+
+# Terminal UI
+rich>=13.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+pandas>=2.1.0
