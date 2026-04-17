@@ -8,9 +8,8 @@ Unlike static recipe chatbots, this system is an interactive partner. It retriev
 
 ## Architecture
 
-`![System Architecture Diagram](docs/Architecture_Diagram.png)`
+![System Architecture Diagram](docs/Architecture_Diagram.png)
 
-The system is designed with a modern, decoupled client-server model:
 1. **Frontend (Interface Layer):** A vanilla HTML/CSS/JS web application featuring a chat interface, dynamic step-by-step cooking panels, a sliding pantry management drawer, and WebRTC-based voice recording.
 2. **Backend (FastAPI):** Exposes REST endpoints (`/chat`, `/chat/voice`, `/next-step`, `/pantry`) to handle all client requests.
 3. **Control Layer (State Machine):** A custom Python controller (`controller.py`) that manages session memory and transitions between `IDLE`, `INGREDIENT_CONFIRM`, and `COOKING`.
@@ -20,7 +19,7 @@ The system is designed with a modern, decoupled client-server model:
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 * **Zero-Latency Step Advancement:** During a cooking session, pressing "Enter" or saying "Next Step" advances the recipe using purely local state logic **(0 LLM calls)**. This ensures zero latency when your hands are full.
 * **Pantry-Aware Personalization:** Before starting a recipe, the system cross-references the ingredients with your SQLite pantry, alerts you to missing items, and offers context-aware substitutions.
@@ -31,9 +30,7 @@ The system is designed with a modern, decoupled client-server model:
 
 ---
 
-## ⚙️ How It Works: The State Machine
-
-The core of the assistant is a rigid Python state machine that eliminates the hallucination loops common in agentic frameworks. 
+## Working
 
 1. **`IDLE` Mode:** The default state. The orchestrator classifies user input into one of 13 intents. The user can add items to the pantry, ask for meal suggestions based on available ingredients, or chat generally.
 2. **`INGREDIENT_CONFIRM` Mode:** Triggered when the user asks to cook a dish. The system performs RAG retrieval, personalizes the recipe, compares it against the SQLite pantry using fuzzy name matching, and lists missing ingredients. It waits in this state until the user confirms they are ready.
@@ -43,9 +40,7 @@ The core of the assistant is a rigid Python state machine that eliminates the ha
 
 ---
 
-## 🗄️ RAG Database Creation Process
-
-The intelligence of the assistant is grounded in a massive, custom-built Vector Database. The primary recipe collection was synthesized from **6 distinct Kaggle datasets** to ensure diverse, highly detailed culinary coverage:
+## RAG Database Creation Process
 
 1. **Datasets Used:** * Indian Food Dataset (250+ traditional recipes).
    * Nutritional Values Dataset.
@@ -62,7 +57,7 @@ The intelligence of the assistant is grounded in a massive, custom-built Vector 
 
 ---
 
-## 🛠️ Technology Stack
+## Tech Stack
 
 | Component | Technology | Purpose |
 | :--- | :--- | :--- |
